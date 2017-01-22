@@ -29,5 +29,6 @@ namespace Entities
         public int ID { get; set; }
         public string Fixture { get; set; }
         public int MarketDetailsID { get; set; }
+        public int prop { get; set; }
     }
 }

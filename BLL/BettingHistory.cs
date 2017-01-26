@@ -8,19 +8,15 @@ using Entities;
 
 namespace BLL
 {
-    public class BettingHistory
+    public class BettingHistory : IHistory
     {
         private readonly IDataProvider dataProvider;
 
-        public BettingHistory()
+        public BettingHistory(IDataProvider dataProvider)
         {
-           dataProvider = new DataProvider();
+            this.dataProvider = dataProvider;
         }
-        public void AllBets()
-        {
-            
-        }
-
+        
         public async Task<MarketDetails> GetBet(int id)
         {
             var marketData = await dataProvider.GetDataFromDB(id);
@@ -32,5 +28,11 @@ namespace BLL
         {
             await dataProvider.Update();
         }
+    }
+
+    public interface IHistory
+    {
+        Task<MarketDetails> GetBet(int id);
+        Task AddBet();
     }
 }

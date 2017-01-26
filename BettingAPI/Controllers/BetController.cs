@@ -13,23 +13,25 @@ namespace BettingAPI.Controllers
     [RoutePrefix("api/v1/bet")]
     public class BetController : ApiController
     {
+        private IHistory history;
+        public BetController(IHistory history)
+        {
+            this.history = history;
+        }
         [HttpGet]        
         [Route("")]
         public async Task<IHttpActionResult> GetAllBets()
         {            
-            var test = new {Col = "Hi colin"};
-            BLL.BettingHistory bh = new BettingHistory();
-            await bh.AddBet();                      
+            var test = new {Col = "Hi colin"};            
+            await history.AddBet();                      
             return Ok(test);
         }
        
-
         [HttpGet]
         [Route("{id}")]
         public async Task<IHttpActionResult> GetBet(int id)
-        {
-            BLL.BettingHistory bh = new BettingHistory();
-            var x = await bh.GetBet(id);            
+        {            
+            var x = await history.GetBet(id);            
             return Ok(x);
         }
     }

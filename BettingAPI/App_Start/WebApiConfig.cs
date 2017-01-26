@@ -18,13 +18,7 @@ namespace BettingAPI
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Web API routes
-            config.MapHttpAttributeRoutes();
-
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/v1/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
+            config.MapHttpAttributeRoutes();       
         }
     }
 }

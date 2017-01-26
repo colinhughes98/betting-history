@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Entities;
 
@@ -17,7 +14,7 @@ namespace DAL
         
         public Task<MarketDetails> GetDataFromDB(int id)
         {
-          return  Task<MarketDetails>.Factory.StartNew(()=> DataFromDb(id));
+          return Task<MarketDetails>.Factory.StartNew(()=> DataFromDb(id));
         }
 
         private  MarketDetails DataFromDb(int id)

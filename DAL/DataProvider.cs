@@ -42,9 +42,5 @@ namespace DAL
         }
     }
 
-    public interface IDataProvider
-    {
-        Task<bool> Update();
-        Task<MarketDetails> GetDataFromDB(int id);
-    }
+
 }

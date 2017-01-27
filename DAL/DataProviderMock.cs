@@ -11,12 +11,14 @@ namespace DAL
     {
         public Task<bool> Update()
         {
-           return new Task<bool>(()=> true);
+           return Task<bool>.Factory.StartNew(()=> true);
         }
 
         public Task<MarketDetails> GetDataFromDB(int id)
         {
-            return new Task<MarketDetails>(() => new MarketDetails() {BookiesOdds = 2, ID = 1, Market = "Asian Handicap"});
+            return
+                Task<MarketDetails>.Factory.StartNew(
+                    () => new MarketDetails() {BookiesOdds = 2, ID = 1, Market = "Asian Handicap"});
         }
     }
 }

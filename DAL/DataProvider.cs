@@ -6,10 +6,10 @@ namespace DAL
 {
     public class DataProvider : IDataProvider
     {
-        public Task<bool> Update()
+        public Task<bool> Insert()
         {
             return Task<bool>.Factory.StartNew(
-                UpdateDB);
+                InsertIntoDB);
         }
         
         public Task<MarketDetails> GetDataFromDB(int id)
@@ -27,7 +27,7 @@ namespace DAL
             return m;
         }
 
-        private bool UpdateDB()
+        private bool InsertIntoDB()
         {
 
             using (var db = new DataModel())

@@ -4,7 +4,7 @@ namespace Entities
 {
     public interface IDataProvider
     {
-        Task<bool> Update();
+        Task<bool> Insert();
         Task<MarketDetails> GetDataFromDB(int id);
     }
 }

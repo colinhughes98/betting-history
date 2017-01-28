@@ -9,7 +9,7 @@ namespace DAL
 {
     public class DataProviderMock : IDataProvider
     {
-        public Task<bool> Update()
+        public Task<bool> Insert()
         {
            return Task<bool>.Factory.StartNew(()=> true);
         }

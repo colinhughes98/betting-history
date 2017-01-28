@@ -22,7 +22,7 @@ namespace BLL
 
         public async Task AddBet()
         {
-            await dataProvider.Update();
+            await dataProvider.Insert();
         }
     }
 

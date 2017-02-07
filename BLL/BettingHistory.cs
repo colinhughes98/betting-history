@@ -26,9 +26,5 @@ namespace BLL
         }
     }
 
-    public interface IHistory
-    {
-        Task<MarketDetails> GetBet(int id);
-        Task AddBet();
-    }
+   
 }

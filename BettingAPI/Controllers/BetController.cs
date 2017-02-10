@@ -20,18 +20,18 @@ namespace BettingAPI.Controllers
         }
         [HttpGet]        
         [Route("")]
-        public async Task<IHttpActionResult> GetAllBets()
+        public async Task<IHttpActionResult> GetAllBetsAsync()
         {            
             var test = new {Col = "Hi colin"};            
-            await history.AddBet();                      
+            await history.AddBetAsync();                      
             return Ok(test);
-        }
+        }        
        
         [HttpGet]
         [Route("{id}")]
-        public async Task<IHttpActionResult> GetBet(int id)
+        public async Task<IHttpActionResult> GetBetAsync(int id)
         {            
-            var x = await history.GetBet(id);            
+            var x = await history.GetBetAsync(id);            
             return Ok(x);
         }
     }

@@ -6,29 +6,29 @@ namespace BLL
 {
     public class BettingHistory : IHistory
     {
-        private readonly IDataProvider dataProvider;
+        private readonly IDataProvider<MarketDetails> dataProvider;
 
-        public BettingHistory(IDataProvider dataProvider)
+        public BettingHistory(IDataProvider<MarketDetails> dataProvider)
         {
             this.dataProvider = dataProvider;
         }
         
-        public async Task<MarketDetails> GetBet(int id)
+        public async Task<MarketDetails> GetBetAsync(int id)
         {
-            var marketData = await dataProvider.GetDataFromDB(id);
+            var marketData = await dataProvider.GetDataFromDBAsync(id);
 
             return marketData;
         }
 
-        public async Task AddBet()
+        public async Task AddBetAsync()
         {
-            await dataProvider.Update();
+            await dataProvider.UpdateAsync();
         }
     }
 
     public interface IHistory
     {
-        Task<MarketDetails> GetBet(int id);
-        Task AddBet();
+        Task<MarketDetails> GetBetAsync(int id);
+        Task AddBetAsync();
     }
 }

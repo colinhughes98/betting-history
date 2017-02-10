@@ -1,43 +1,31 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using Entities;
 
 namespace DAL
 {
-    public class DataProvider : IDataProvider
+    public class DataProvider : IDataProvider<MarketDetails>
     {
-        public Task<bool> Update()
+        public async Task<bool> UpdateAsync()
         {
-            return Task<bool>.Factory.StartNew(
-                UpdateDB);
+            int save;
+            using (var db = new DataModel())
+            {
+                db.MarketDetailses.Add(new MarketDetails() { ID = 1, BookiesOdds = 2.1M, Market = "Asian Handicap 0" });
+                save = await db.SaveChangesAsync();
+            }
+            return save > -1;
         }
         
-        public Task<MarketDetails> GetDataFromDB(int id)
-        {
-          return Task<MarketDetails>.Factory.StartNew(()=> DataFromDb(id));
-        }
-
-        private  MarketDetails DataFromDb(int id)
+        public async Task<MarketDetails> GetDataFromDBAsync(int id)
         {
             MarketDetails m;
             using (var db = new DataModel())
             {
-                m = db.MarketDetailses.SingleOrDefault(a => a.ID == id);
+                m = await db.MarketDetailses.FindAsync(id);                
             }
             return m;
-        }
-
-        private bool UpdateDB()
-        {
-
-            using (var db = new DataModel())
-            {
-                db.MarketDetailses.Add(new MarketDetails() {ID = 1, BookiesOdds = 2.1M, Market = "Asian Handicap 0"});
-                var save = db.SaveChanges();
-            }
-            return false;
-        }
+        }               
     }
-
-
 }

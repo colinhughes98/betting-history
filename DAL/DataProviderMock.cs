@@ -7,18 +7,22 @@ using Entities;
 
 namespace DAL
 {
-    public class DataProviderMock : IDataProvider
+    public class DataProviderMock : IDataProvider<MarketDetails>
     {
-        public Task<bool> Update()
+        public Task<bool> UpdateAsync()
         {
-           return Task<bool>.Factory.StartNew(()=> true);
+            return new Task<bool>(()=>true);
         }
 
-        public Task<MarketDetails> GetDataFromDB(int id)
+        public Task<MarketDetails> GetDataFromDBAsync(int id)
         {
-            return
-                Task<MarketDetails>.Factory.StartNew(
-                    () => new MarketDetails() {BookiesOdds = 2, ID = 1, Market = "Asian Handicap"});
+            var m = new MarketDetails()
+            {
+                BookiesOdds = 2,
+                ID = 1,
+                Market = "Asian Handicap"
+            };
+            return new Task<MarketDetails>(() => m);
         }
     }
 }

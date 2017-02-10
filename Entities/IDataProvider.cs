@@ -2,9 +2,9 @@
 
 namespace Entities
 {
-    public interface IDataProvider
+    public interface IDataProvider<T>
     {
-        Task<bool> Update();
-        Task<MarketDetails> GetDataFromDB(int id);
+        Task<bool> UpdateAsync();
+        Task<T> GetDataFromDBAsync(int id);
     }
 }

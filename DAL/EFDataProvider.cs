@@ -5,7 +5,7 @@ using Entities;
 
 namespace DAL
 {
-    public class DataProvider : IDataProvider<MarketDetails>
+    public class EFDataProvider : IDataProvider<MarketDetails>
     {
         public async Task<bool> UpdateAsync()
         {

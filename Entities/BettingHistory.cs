@@ -9,7 +9,7 @@ namespace Entities
     public class BettingHistory
     {
         public int ID { get; set; }
-        public int FixtureDetailsID { get; set; }
+        public FixtureDetails FixtureDetails { get; set; }
         public decimal Stake { get; set; }
         public int Result { get; set; }
         public string FinalScore { get; set; }
@@ -28,7 +28,7 @@ namespace Entities
     {
         public int ID { get; set; }
         public string Fixture { get; set; }
-        public int MarketDetailsID { get; set; }
+        public MarketDetails MarketDetails { get; set; }
         public int prop { get; set; }
     }
 }

@@ -24,11 +24,6 @@ namespace BLL
         {
             await dataProvider.UpdateAsync();
         }
-    }
-
-    public interface IHistory
-    {
-        Task<MarketDetails> GetBetAsync(int id);
-        Task AddBetAsync();
-    }
+           
+    }    
 }

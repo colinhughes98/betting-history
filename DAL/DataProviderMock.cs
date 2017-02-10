@@ -9,7 +9,7 @@ namespace DAL
 {
     public class DataProviderMock : IDataProvider<MarketDetails>
     {
-        public Task<bool> UpdateAsync()
+        public Task<bool> Update()
         {
             return new Task<bool>(()=>true);
         }
@@ -17,7 +17,7 @@ namespace DAL
         public Task<MarketDetails> GetDataFromDBAsync(int id)
         {
             var m = new MarketDetails()
-            {
+        {
                 BookiesOdds = 2,
                 ID = 1,
                 Market = "Asian Handicap"

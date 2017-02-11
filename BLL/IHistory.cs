@@ -9,7 +9,7 @@ namespace BLL
 {
     public interface IHistory
     {
-        Task<MarketDetails> GetBetAsync(int id);
+        Task<FixtureDetails> GetBetAsync(int id);
         Task AddBetAsync();
     }
 }

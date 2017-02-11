@@ -1,10 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Data;
+using System.Threading.Tasks;
 
 namespace Entities
 {
-    public interface IDataProvider<T>
+    public interface IDataProvider
     {
         Task<bool> UpdateAsync();
-        Task<T> GetDataFromDBAsync(int id);
+        Task<DataSet> GeBetsFromDBAsync(int id);
     }
 }

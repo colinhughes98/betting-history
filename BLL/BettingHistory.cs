@@ -34,9 +34,9 @@ namespace BLL
             return fd;
         }
 
-        public async Task AddBetAsync()
+        public async Task<bool> AddBetAsync()
         {
-            await dataProvider.UpdateAsync();
+           return await dataProvider.UpdateAsync();
         }           
     }    
 }

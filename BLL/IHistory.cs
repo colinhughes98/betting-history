@@ -11,6 +11,6 @@ namespace BLL
     {
         Task<BettingHistory> GetAllBetsAsync();
         Task<FixtureDetails> GetBetAsync(int id);
-        Task AddBetAsync();
+        Task<bool> AddBetAsync();
     }
 }

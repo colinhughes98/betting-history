@@ -39,7 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BettingHistory.cs" />
+    <Compile Include="FixtureDetails.cs" />
+    <Compile Include="MarketDetails.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

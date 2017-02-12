@@ -19,5 +19,10 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
+        public Task<DataSet> GetAllBetsHistoryAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

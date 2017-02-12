@@ -13,10 +13,15 @@ namespace BLL
         {
             this.dataProvider = dataProvider;
         }
-        
+
+        public Task<BettingHistory> GetAllBetsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<FixtureDetails> GetBetAsync(int id)
         {
-            FixtureDetails fd = new FixtureDetails();
+            FixtureDetails fd = new FixtureDetails();            
             var fixtureData = await dataProvider.GeBetsFromDBAsync(id);
 
             if (fixtureData != null && fixtureData.Tables.Count > 0)

@@ -7,5 +7,6 @@ namespace Entities
     {
         Task<bool> UpdateAsync();
         Task<DataSet> GeBetsFromDBAsync(int id);
+        Task<DataSet> GetAllBetsHistoryAsync();
     }
 }

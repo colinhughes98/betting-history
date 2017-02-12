@@ -21,12 +21,15 @@ namespace DAL
             DataTable dt = new DataTable();
             var row = dt.NewRow();
             dt.Columns.Add("Id");
-            row["Id"] = 12;
-            //var col = dt.Columns.Add("Id");                       
+            row["Id"] = 12;            
             dt.Rows.Add(row);
-            ds.Tables.Add(dt);
-            
+            ds.Tables.Add(dt);            
             return  ds;
+        }
+
+        public Task<DataSet> GetAllBetsHistoryAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

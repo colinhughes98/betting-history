@@ -9,6 +9,7 @@ namespace BLL
 {
     public interface IHistory
     {
+        Task<BettingHistory> GetAllBetsAsync();
         Task<FixtureDetails> GetBetAsync(int id);
         Task AddBetAsync();
     }

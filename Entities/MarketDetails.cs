@@ -8,8 +8,7 @@ namespace Entities
 {   
     public class MarketDetails
     {
-        public int ID { get; set; }
-        public int FixtureId { get; set; }
+        public int ID { get; set; }        
         public string Market { get; set; }
         public decimal BookiesOdds { get; set; }
         public decimal Stake { get; set; }

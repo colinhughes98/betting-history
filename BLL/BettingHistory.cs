@@ -29,6 +29,7 @@ namespace BLL
                 var table = fixtureData.Tables[0];
 
                 fd.ID = Convert.ToInt32(table.Rows[0]["Id"]);
+                fd.MarketDetails = new[]{new MarketDetails(){ BookiesOdds = 2M, FinalScore = "2-1"}};
             }
             return fd;
         }

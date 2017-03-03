@@ -21,11 +21,12 @@ namespace DAL
         //{
         //    throw new NotImplementedException();
         //}
-        
-        public Task<IEnumerable> GetAllBetsHistoryAsync()
+
+
+        public IEnumerable<string> GetAllBetsHistory()
         {
-            var results = new [] {"Colin", "Hughes"};
-            return new Task<IEnumerable>(results.ToList);
+            var results = new[] { "Colin", "Hughes" };
+            return results;
         }
     }
 }

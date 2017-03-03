@@ -30,7 +30,7 @@ namespace DAL
         //}
 
 
-        public Task<IEnumerable> GetAllBetsHistoryAsync()
+        public IEnumerable<string> GetAllBetsHistory()
         {
             throw new NotImplementedException();
         }

@@ -16,6 +16,7 @@ namespace BettingAPI
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
             // Web API routes
+        
             config.MapHttpAttributeRoutes();       
         }
     }

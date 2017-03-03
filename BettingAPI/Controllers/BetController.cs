@@ -21,9 +21,9 @@ namespace BettingAPI.Controllers
         }
         [HttpGet]        
         [Route("")]
-        public async Task<IHttpActionResult> GetAllBetsAsync()
+        public IHttpActionResult GetAllBetsAsync()
         {                       
-            var x = await history.GetAllBetsAsync();
+            var x = history.GetAllBets();
             if (x == null) return InternalServerError();
 
             return Ok(x);

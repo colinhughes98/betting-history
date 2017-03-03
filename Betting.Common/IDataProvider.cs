@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 
@@ -8,6 +9,6 @@ namespace Betting.Common
     {
         //Task<bool> UpdateAsync();
         //Task<DataSet> GeBetsFromDBAsync(int id);
-        Task<IEnumerable> GetAllBetsHistoryAsync();
+        IEnumerable<string> GetAllBetsHistory();
     }
 }

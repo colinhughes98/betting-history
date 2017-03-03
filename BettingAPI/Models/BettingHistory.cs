@@ -15,11 +15,9 @@ namespace BettingAPI.Models
             this.dataProvider = dataProvider;
         }
 
-        public async Task<dynamic> GetAllBetsAsync()
-        {
-            dynamic history = new {};
-            var results = await dataProvider.GetAllBetsHistoryAsync();
-            return history;
+        public object GetAllBets()
+        {                        
+            return  dataProvider.GetAllBetsHistory();
         }
 
         //public async Task<FixtureDetails> GetBetAsync(int id)

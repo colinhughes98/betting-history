@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Betting.Common;
-using BettingAPI.Interfaces;
 using DAL;
 
-namespace BettingAPI.Models
+namespace BettingAPI.ModelFactories
 {
     public class BettingHistory : IHistory
     {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace BLL
+namespace BettingAPI.Interfaces
 {
     public interface IHistory
     {

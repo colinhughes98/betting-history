@@ -83,14 +83,6 @@
       <Project>{4D4287E6-0A79-4D42-A580-353922B4054F}</Project>
       <Name>BettingAPI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{5ECA374D-D50C-4BB8-B430-AAEACF620376}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{160C73AD-8147-47EB-9241-7119C81AFABA}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

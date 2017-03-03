@@ -1,6 +1,7 @@
-using BLL;
+using Betting.Common;
+using BettingAPI.Interfaces;
+using BettingAPI.Models;
 using DAL;
-using Entities;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(BettingAPI.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(BettingAPI.App_Start.NinjectWebCommon), "Stop")]
@@ -65,8 +66,8 @@ namespace BettingAPI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IHistory>().To<BLL.BettingHistory>();
-            kernel.Bind<IDataProvider>().To<DataProviderMock>();
+            kernel.Bind<IHistory>().To<BettingHistory>();
+            kernel.Bind<IDataProvider>().To<DatabaseProxy>();
         }        
     }
 }

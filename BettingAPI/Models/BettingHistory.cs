@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Betting.Common;
+using BettingAPI.Interfaces;
 using DAL;
-using Entities;
 
-namespace BLL
+namespace BettingAPI.Models
 {
     public class BettingHistory : IHistory
     {

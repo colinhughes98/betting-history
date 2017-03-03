@@ -6,7 +6,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using BLL;
+using BettingAPI.Interfaces;
+
 
 namespace BettingAPI.Controllers
 {    
@@ -21,18 +22,19 @@ namespace BettingAPI.Controllers
         [HttpGet]        
         [Route("")]
         public async Task<IHttpActionResult> GetAllBetsAsync()
-        {            
-            var test = new {Col = "Hi colin"};            
-            await history.AddBetAsync();                      
-            return Ok(test);
+        {                       
+            var x = await history.GetAllBetsAsync();
+            if (x == null) return InternalServerError();
+
+            return Ok(x);
         }        
        
-        [HttpGet]
-        [Route("{id}")]
-        public async Task<IHttpActionResult> GetBetAsync(int id)
-        {            
-            var x = await history.GetBetAsync(id);            
-            return Ok(x);
-        }
+        //[HttpGet]
+        //[Route("{id}")]
+        //public async Task<IHttpActionResult> GetBetAsync(int id)
+        //{            
+        //    var x = await history.GetBetAsync(id);            
+        //    return Ok(x);
+        //}
     }
 }

@@ -1,5 +1,6 @@
 using Betting.Common;
-using BettingAPI.ModelFactories;
+using Betting.Common.Interfaces;
+using BettingAPI.DomainLogic;
 using DAL;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(BettingAPI.App_Start.NinjectWebCommon), "Start")]

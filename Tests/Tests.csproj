@@ -79,6 +79,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Betting.Common\Betting.Common.csproj">
+      <Project>{819BE7B8-A1BB-45F5-A748-EA695B097061}</Project>
+      <Name>Betting.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BettingAPI\BettingAPI.csproj">
       <Project>{4D4287E6-0A79-4D42-A580-353922B4054F}</Project>
       <Name>BettingAPI</Name>

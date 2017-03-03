@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Betting.Common
+namespace BettingAPI.Models
 {   
-    public class MarketDetails
+    public class MarketDetailsModel
     {
         public int ID { get; set; }        
         public string Market { get; set; }

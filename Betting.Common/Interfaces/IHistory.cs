@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
+using Betting.Common.Models;
 
-namespace Betting.Common
+namespace Betting.Common.Interfaces
 {
     public interface IHistory
     {
-        BettingDetails GetAllBets();
+        BettingDetailsModel GetAllBets();
         //Task<FixtureDetails> GetBetAsync(int id);
         //Task<bool> AddBetAsync();
     }

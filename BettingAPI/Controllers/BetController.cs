@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
-using System.Web.Http.Routing;
 using Betting.Common;
-using BettingAPI.ModelFactories;
-
+using Betting.Common.Interfaces;
+using Betting.Common.Models;
 
 namespace BettingAPI.Controllers
 {
@@ -27,7 +20,7 @@ namespace BettingAPI.Controllers
         [Route("")]
         public IHttpActionResult GetAllBetsAsync()
         {
-            BettingDetails details;
+            BettingDetailsModel details;
             try
             {
                 details = history.GetAllBets();

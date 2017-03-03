@@ -226,8 +226,10 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="ModelFactories\BettingHistory.cs" />
+    <Compile Include="DomainLogic\BettingHistory.cs" />
+    <Compile Include="Models\FixtureDetailsModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MarketDetailsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />

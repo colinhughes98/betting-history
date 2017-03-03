@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Betting.Common
+namespace Betting.Common.Models
 {
-    public class BettingDetails
+    public class BettingDetailsModel
     {
         public string FirstName { get; set; }
         public string Surname { get; set; }

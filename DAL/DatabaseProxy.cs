@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Betting.Common;
+using Betting.Common.Interfaces;
 
 
 namespace DAL
@@ -22,7 +23,7 @@ namespace DAL
         //    throw new NotImplementedException();
         //}
 
-
+            //TODO: This needs to be a IDataReader so we can read data
         public IEnumerable<string> GetAllBetsHistory()
         {
             var results = new[] { "Colin", "Hughes" };

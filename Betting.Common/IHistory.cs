@@ -4,7 +4,7 @@ namespace Betting.Common
 {
     public interface IHistory
     {
-        object GetAllBets();
+        BettingDetails GetAllBets();
         //Task<FixtureDetails> GetBetAsync(int id);
         //Task<bool> AddBetAsync();
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Betting.Common;
 using DAL;
@@ -14,9 +15,11 @@ namespace BettingAPI.ModelFactories
             this.dataProvider = dataProvider;
         }
 
-        public object GetAllBets()
+        public BettingDetails GetAllBets()
         {                        
-            return  dataProvider.GetAllBetsHistory();
+            var hist =  dataProvider.GetAllBetsHistory();
+
+            return new BettingDetails {FirstName = hist.FirstOrDefault(), Surname = hist.LastOrDefault()};
         }
 
         //public async Task<FixtureDetails> GetBetAsync(int id)

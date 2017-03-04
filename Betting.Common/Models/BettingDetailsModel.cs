@@ -9,7 +9,6 @@ namespace Betting.Common.Models
     public class BettingDetailsModel
     {
         public string FirstName { get; set; }
-        public string Surname { get; set; }
-        public string URL { get; set; }
+        public string Surname { get; set; }        
     }
 }

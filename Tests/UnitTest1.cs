@@ -32,11 +32,11 @@ namespace Tests
             //Act
             //BaseController hist = new BaseController(dataProvider.Object);
             //hist.Create("GetAllBets");
-            BetController bc = new BetController(dataProvider.Object);
-            var result = bc.GetAllBetsAsync();
+            //BetController bc = new BetController(dataProvider.Object);
+            //var result = bc.GetAllBetsAsync();
 
-            //Assert
-            dataProvider.Verify(a => a.GetAllBetsHistory(), Times.Once());
+            ////Assert
+            //dataProvider.Verify(a => a.GetAllBetsHistory(), Times.Once());
             //history.Verify(a => a.GetAllBets(), Times.Once);
 
             //Task<bool> response = new Task<bool>( ()=> true);

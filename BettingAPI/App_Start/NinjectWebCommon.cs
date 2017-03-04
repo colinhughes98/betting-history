@@ -1,6 +1,7 @@
 using System.Web.Http;
 using Betting.Common;
 using Betting.Common.Interfaces;
+using Betting.Common.Models;
 using BettingAPI.DomainLogic;
 using DAL;
 
@@ -67,7 +68,7 @@ namespace BettingAPI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IModelFactory<IHttpActionResult>>().To<BaseController>();
+            kernel.Bind<ITheBets>().To<SomeBusinessLogicForBets>();
             kernel.Bind<IDataProvider>().To<DatabaseProxy>();
         }        
     }

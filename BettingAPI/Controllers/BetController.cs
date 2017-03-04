@@ -12,7 +12,7 @@ namespace BettingAPI.Controllers
     [RoutePrefix("api/v1/bet")]
     public class BetController : BaseController
     {
-        public BetController(IDataProvider provider):base(provider)
+        public BetController(ITheBets bets):base(bets)
         {
         }        
 

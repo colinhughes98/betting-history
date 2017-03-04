@@ -17,18 +17,23 @@ namespace Tests
         public void TestMethod1()
         {
             //Arrange
-            var results = new[] { "ColinTest", "HughesTest" };
-            BettingDetailsModel bmodel = new BettingDetailsModel();
-            bmodel.FirstName = results.FirstOrDefault();
-            bmodel.Surname = results.LastOrDefault();
+            //var results = new[] { "ColinTest", "HughesTest" };
+            //BettingDetailsModel bmodel = new BettingDetailsModel();
+            //bmodel.FirstName = results.FirstOrDefault();
+            //bmodel.Surname = results.LastOrDefault();
             
-            var dataProvider = new Mock<IDataProvider>();
-            dataProvider.Setup(x => x.GetAllBetsHistory()).Returns(results);
+            var theBets = new Mock<ITheBets>();
+            theBets.Setup(x => x.GetTheBets());
 
+            var dataProvider = new Mock<IDataProvider>();
+            dataProvider.Setup(x => x.GetAllBetsHistory());
+            
+            BetController bc = new BetController(theBets.Object);
+            bc.GetAllBetsAsync();
             //var history = new Mock<IModelFactory>();
             //history.Setup(x => x.Create("GetAllBets")).Returns(bmodel);
 
-            
+
             //Act
             //BaseController hist = new BaseController(dataProvider.Object);
             //hist.Create("GetAllBets");

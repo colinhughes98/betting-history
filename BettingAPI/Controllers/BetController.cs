@@ -6,6 +6,7 @@ using Betting.Common;
 using Betting.Common.Interfaces;
 using Betting.Common.Models;
 using BettingAPI.DomainLogic;
+using BettingAPI.Enums;
 
 namespace BettingAPI.Controllers
 {
@@ -17,10 +18,10 @@ namespace BettingAPI.Controllers
         }        
 
         [HttpGet]
-        [Route("",Name = "GetAllBets")]
+        [Route("", Name = "GetAllBets")]
         public IHttpActionResult GetAllBetsAsync()
         {            
-           return Create("GetAllBets");                            
+           return Create(RouteEnum.GetAllBets);                            
         }       
-    }
+    }    
 }

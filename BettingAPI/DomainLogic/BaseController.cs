@@ -4,9 +4,10 @@ using System.Web.Http;
 using System.Web.Http.Routing;
 using Betting.Common.Interfaces;
 using Betting.Common.Models;
+using BettingAPI.Enums;
 
 namespace BettingAPI.DomainLogic
-{
+{    
     public class BaseController : ApiController
     {
         private ITheBets bets;
@@ -15,16 +16,15 @@ namespace BettingAPI.DomainLogic
             this.bets = bets;
         }
 
-        public IHttpActionResult Create(string action)
+        public IHttpActionResult Create(RouteEnum action)
         {            
             try
             {
                 switch (action)
                 {
-                    case "GetAllBets":
-                        //SomeBusinessLogicForBets some = new SomeBusinessLogicForBets(dataProvider);
+                    case RouteEnum.GetAllBets:                        
                         UrlHelper url = new UrlHelper(Request);
-                        return Ok(new {bets = bets.GetTheBets(), url = url.Link(action, null)});
+                        return Ok(new {bets = bets.GetTheBets(), url = url.Link(Enum.GetName(typeof(RouteEnum), action), null)});
                     default:
                         return NotFound();
                 }

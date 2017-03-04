@@ -1,3 +1,4 @@
+using System.Web.Http;
 using Betting.Common;
 using Betting.Common.Interfaces;
 using BettingAPI.DomainLogic;
@@ -66,7 +67,7 @@ namespace BettingAPI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IHistory>().To<BettingHistory>();
+            kernel.Bind<IModelFactory<IHttpActionResult>>().To<BaseController>();
             kernel.Bind<IDataProvider>().To<DatabaseProxy>();
         }        
     }

@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
+using System.Web.Http;
 using Betting.Common.Models;
 
 namespace Betting.Common.Interfaces
 {
-    public interface IHistory
+    public interface IModelFactory<out T>
     {
-        BettingDetailsModel GetAllBets();
+        T Create(string action);
         //Task<FixtureDetails> GetBetAsync(int id);
         //Task<bool> AddBetAsync();
     }

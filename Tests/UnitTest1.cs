@@ -25,14 +25,14 @@ namespace Tests
             var dataProvider = new Mock<IDataProvider>();
             dataProvider.Setup(x => x.GetAllBetsHistory()).Returns(results);
 
-            var history = new Mock<IHistory>();
-            history.Setup(x => x.GetAllBets()).Returns(bmodel);
+            //var history = new Mock<IModelFactory>();
+            //history.Setup(x => x.Create("GetAllBets")).Returns(bmodel);
 
             
             //Act
-            BettingHistory hist = new BettingHistory(dataProvider.Object);
-            hist.GetAllBets();
-            BetController bc = new BetController(history.Object);
+            //BaseController hist = new BaseController(dataProvider.Object);
+            //hist.Create("GetAllBets");
+            BetController bc = new BetController(dataProvider.Object);
             var result = bc.GetAllBetsAsync();
 
             //Assert
@@ -41,7 +41,7 @@ namespace Tests
 
             //Task<bool> response = new Task<bool>( ()=> true);
             //var dataMoq = new Mock<IDataProvider>();
-            //var bh = new BettingHistory(dataMoq.Object);
+            //var bh = new BaseController(dataMoq.Object);
             //dataMoq.Setup(x => x.UpdateAsync()).Returns(response);
             ////Act           
             //var y = bh.AddBetAsync();

@@ -29,7 +29,7 @@ namespace BettingAPI.DomainLogic
                         return NotFound();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return InternalServerError();
             }                        

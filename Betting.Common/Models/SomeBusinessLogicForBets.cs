@@ -20,7 +20,7 @@ namespace Betting.Common.Models
             var hist = dataProvider.GetAllBetsHistory();
             if (hist == null) throw new Exception();
 
-            return new BettingDetailsModel { FirstName = hist.FirstOrDefault(), Surname = hist.LastOrDefault() };
+            return new BettingDetailsModel();// { FirstName = hist.FirstOrDefault(), Surname = hist.LastOrDefault() };
         }
 
         public BettingDetailsModel GetTheBets(int id)

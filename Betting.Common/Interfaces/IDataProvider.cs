@@ -9,6 +9,6 @@ namespace Betting.Common.Interfaces
     {
         //Task<bool> UpdateAsync();
         //Task<DataSet> GeBetsFromDBAsync(int id);
-        IEnumerable<string> GetAllBetsHistory();
+        IDataReader GetAllBetsHistory();
     }
 }

@@ -7,27 +7,30 @@ using System.Text;
 using System.Threading.Tasks;
 using Betting.Common;
 using Betting.Common.Interfaces;
-
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
+using System.Configuration;
 
 namespace DAL
 {
     public class DatabaseProxy : IDataProvider
-    {
-        //public Task<bool> UpdateAsync()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Task<DataSet> GeBetsFromDBAsync(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
+    {       
             //TODO: This needs to be a IDataReader so we can read data
-        public IEnumerable<string> GetAllBetsHistory()
+        public IDataReader GetAllBetsHistory()
         {
-            var results = new[] { "Colin", "Hughes" };
-            return results;
+           var connString = ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
+          
+            Database db = new SqlDatabase(connString);
+           
+            using (var connection = db.CreateConnection())
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "dbo.GetListOfFixtures";
+                command.CommandType = CommandType.StoredProcedure;
+
+                return command.ExecuteReader();                          
+            }
         }
     }
 }

@@ -24,12 +24,11 @@ namespace BettingAPI.Controllers
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
-        private ApplicationUserManager _userManager;
-
+        
         public AccountController()
         {
         }
-
+        
         public AccountController(ApplicationUserManager userManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
@@ -37,6 +36,16 @@ namespace BettingAPI.Controllers
             AccessTokenFormat = accessTokenFormat;
         }
 
+        private ApplicationRoleManager _appRoleManager;
+        protected ApplicationRoleManager AppRoleManager
+        {
+            get
+            {
+                return _appRoleManager ?? Request.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+            }
+        }
+
+        private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
             get
@@ -48,6 +57,7 @@ namespace BettingAPI.Controllers
                 _userManager = value;
             }
         }
+        
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
@@ -373,6 +383,35 @@ namespace BettingAPI.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
+        [Route("{id:guid}", Name = "GetRoleById")]
+        public async Task<IHttpActionResult> GetRole(string Id)
+        {
+            var role = await this.AppRoleManager.FindByIdAsync(Id);
+
+            if (role != null)
+            {
+                return Ok(TheModelFactory.Create(role));
+            }
+
+            return NotFound();
+
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route(Name = "CreateRole")]
+        public async Task<IHttpActionResult> CreateRole(RoleModel roleModel)
+        {
+            IdentityRole role = new IdentityRole(roleModel.Name);
+            var newRole = await this.AppRoleManager.CreateAsync(role);
+            if (newRole != null)
+            {
+                return Ok(TheModelFactory.Create(role));
+            }
+            return BadRequest();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
@@ -490,5 +529,24 @@ namespace BettingAPI.Controllers
         }
 
         #endregion
+    }
+
+    public class RoleModel
+    {
+        public string Name { get; set; }
+    }
+
+    public class TheModelFactory
+    {
+        public static RoleReturnModel Create(IdentityRole role)
+        {
+            return new RoleReturnModel {Id = role.Id, Name = role.Name};
+        }
+    }
+
+    public class RoleReturnModel
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
     }
 }

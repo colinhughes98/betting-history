@@ -53,10 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\ITheBets.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Models\BettingDetailsModel.cs" />
     <Compile Include="Interfaces\IDataProvider.cs" />
-    <Compile Include="Models\SomeBusinessLogicForBets.cs" />
+    <Compile Include="Models\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

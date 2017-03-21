@@ -68,7 +68,7 @@ namespace BettingAPI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<ITheBets>().To<SomeBusinessLogicForBets>();
+            kernel.Bind<IRepository>().To<Repository>();
             kernel.Bind<IDataProvider>().To<DatabaseProxy>();
         }        
     }

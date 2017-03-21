@@ -7,19 +7,23 @@ using Betting.Common.Interfaces;
 
 namespace Betting.Common.Models
 {
-    public class SomeBusinessLogicForBets : ITheBets
+    public class Repository : IRepository
     {
         private readonly IDataProvider dataProvider;
-        public SomeBusinessLogicForBets(IDataProvider dataProvider)
+        public Repository(IDataProvider dataProvider)
         {
             this.dataProvider = dataProvider;
         }
 
-        public BettingDetailsModel GetTheBets()
+        public async Task<BettingDetailsModel> GetTheBetsAsync()
         {
-            var hist = dataProvider.GetAllBetsHistory();
+            var hist = await dataProvider.GetAllBetsHistoryAsync();
             if (hist == null) throw new Exception();
 
+            while (hist.Read())
+            {
+                //todo: read data
+            }
             return new BettingDetailsModel();// { FirstName = hist.FirstOrDefault(), Surname = hist.LastOrDefault() };
         }
 

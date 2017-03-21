@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Routing;
 using Betting.Common;
@@ -10,20 +11,21 @@ using BettingAPI.Enums;
 
 namespace BettingAPI.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/v1/bet")]
     public class BetController : BaseController
     {
-        public BetController(ITheBets bets):base(bets)
+        public BetController(IRepository repo):base(repo)
         {
         }        
 
         [HttpGet]
-        [Route("", Name = "CreateGetAllBets")]
-        public IHttpActionResult GetAllBetsAsync()
+        [Route("", Name = "GetAllBets")]
+        public async Task<IHttpActionResult> GetAllBetsAsync()
         {
             try
             {
-                return  Ok(CreateGetAllBets());
+                return Ok(await CreateGetAllBetsFactoryAsync());
             }
             catch (Exception)
             {

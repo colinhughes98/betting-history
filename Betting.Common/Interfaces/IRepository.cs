@@ -7,9 +7,9 @@ using Betting.Common.Models;
 
 namespace Betting.Common.Interfaces
 {
-    public interface ITheBets
+    public interface IRepository
     {
-        BettingDetailsModel GetTheBets();
+        Task<BettingDetailsModel> GetTheBetsAsync();
 
         BettingDetailsModel GetTheBets(int id);
     }

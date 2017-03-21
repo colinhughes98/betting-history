@@ -14,11 +14,10 @@ using System.Configuration;
 namespace DAL
 {
     public class DatabaseProxy : IDataProvider
-    {       
-            //TODO: This needs to be a IDataReader so we can read data
-        public IDataReader GetAllBetsHistory()
+    {                   
+        public async Task<IDataReader> GetAllBetsHistoryAsync()
         {
-           var connString = ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
+           var connString =  ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
           
             Database db = new SqlDatabase(connString);
            
@@ -29,7 +28,7 @@ namespace DAL
                 command.CommandText = "dbo.GetListOfFixtures";
                 command.CommandType = CommandType.StoredProcedure;
 
-                return command.ExecuteReader();                          
+                return await command.ExecuteReaderAsync();                          
             }
         }
     }

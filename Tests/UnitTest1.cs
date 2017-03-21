@@ -22,27 +22,27 @@ namespace Tests
             //bmodel.FirstName = results.FirstOrDefault();
             //bmodel.Surname = results.LastOrDefault();
             
-            var theBets = new Mock<ITheBets>();
-            theBets.Setup(x => x.GetTheBets());
+            //var theBets = new Mock<IRepository>();
+            //theBets.Setup(x => x.GetTheBets());
 
-            var dataProvider = new Mock<IDataProvider>();
-            dataProvider.Setup(x => x.GetAllBetsHistory());
+            //var dataProvider = new Mock<IDataProvider>();
+            //dataProvider.Setup(x => x.GetAllBetsHistory());
             
-            BetController bc = new BetController(theBets.Object);
-            bc.GetAllBetsAsync();
+            //BetController bc = new BetController(theBets.Object);
+            //bc.GetAllBetsAsync();
             //var history = new Mock<IModelFactory>();
-            //history.Setup(x => x.ModelFactory("CreateGetAllBets")).Returns(bmodel);
+            //history.Setup(x => x.ModelFactory("CreateGetAllBetsFactoryAsync")).Returns(bmodel);
 
 
             //Act
             //BaseController hist = new BaseController(dataProvider.Object);
-            //hist.ModelFactory("CreateGetAllBets");
+            //hist.ModelFactory("CreateGetAllBetsFactoryAsync");
             //BetController bc = new BetController(dataProvider.Object);
             //var result = bc.GetAllBetsAsync();
 
             ////Assert
             //dataProvider.Verify(a => a.GetAllBetsHistory(), Times.Once());
-            //history.Verify(a => a.CreateGetAllBets(), Times.Once);
+            //history.Verify(a => a.CreateGetAllBetsFactoryAsync(), Times.Once);
 
             //Task<bool> response = new Task<bool>( ()=> true);
             //var dataMoq = new Mock<IDataProvider>();

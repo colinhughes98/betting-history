@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Routing;
 using Betting.Common.Interfaces;
@@ -12,10 +13,10 @@ namespace BettingAPI.DomainLogic
 {    
     public class BaseController : ApiController
     {
-        private ITheBets bets;
-        public BaseController(ITheBets bets)
+        private readonly IRepository _repo;
+        public BaseController(IRepository repo)
         {
-            this.bets = bets;
+            _repo = repo;
         }
 
         //public IHttpActionResult ModelFactory(RouteEnum action)
@@ -24,11 +25,11 @@ namespace BettingAPI.DomainLogic
         //    {
         //        switch (action)
         //        {                        
-        //            case RouteEnum.CreateGetAllBets:                        
+        //            case RouteEnum.CreateGetAllBetsFactoryAsync:                        
         //                UrlHelper url = new UrlHelper(Request);
         //                return Ok(new
         //                {
-        //                    bets = bets.GetTheBets(), 
+        //                    repo = repo.GetTheBets(), 
         //                    url = url.Link(Enum.GetName(typeof(RouteEnum), action), null)
         //                });
         //            default:
@@ -41,13 +42,14 @@ namespace BettingAPI.DomainLogic
         //    }                        
         //}
 
-        protected GetTheBetsModel CreateGetAllBets()
+        protected async Task<GetTheBetsModel> CreateGetAllBetsFactoryAsync()
         {
             UrlHelper url = new UrlHelper(Request);
+            var bets = await _repo.GetTheBetsAsync();
             return new GetTheBetsModel
             {
-                Bets = bets.GetTheBets(),
-                URL = url.Link("", null)
+                Bets = bets,
+                URL = url.Link("GetAllBets", null)
             };
         }
     }    

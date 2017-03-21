@@ -31,18 +31,18 @@ namespace Tests
             BetController bc = new BetController(theBets.Object);
             bc.GetAllBetsAsync();
             //var history = new Mock<IModelFactory>();
-            //history.Setup(x => x.Create("GetAllBets")).Returns(bmodel);
+            //history.Setup(x => x.ModelFactory("CreateGetAllBets")).Returns(bmodel);
 
 
             //Act
             //BaseController hist = new BaseController(dataProvider.Object);
-            //hist.Create("GetAllBets");
+            //hist.ModelFactory("CreateGetAllBets");
             //BetController bc = new BetController(dataProvider.Object);
             //var result = bc.GetAllBetsAsync();
 
             ////Assert
             //dataProvider.Verify(a => a.GetAllBetsHistory(), Times.Once());
-            //history.Verify(a => a.GetAllBets(), Times.Once);
+            //history.Verify(a => a.CreateGetAllBets(), Times.Once);
 
             //Task<bool> response = new Task<bool>( ()=> true);
             //var dataMoq = new Mock<IDataProvider>();

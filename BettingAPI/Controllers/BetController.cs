@@ -18,10 +18,17 @@ namespace BettingAPI.Controllers
         }        
 
         [HttpGet]
-        [Route("", Name = "GetAllBets")]
+        [Route("", Name = "CreateGetAllBets")]
         public IHttpActionResult GetAllBetsAsync()
-        {            
-           return Create(RouteEnum.GetAllBets);                            
+        {
+            try
+            {
+                return  Ok(CreateGetAllBets());
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }       
     }    
 }

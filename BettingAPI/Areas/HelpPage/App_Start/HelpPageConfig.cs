@@ -92,7 +92,7 @@ namespace BettingAPI.Areas.HelpPage
                     Type[] typeParameters = type.GetGenericArguments();
                     Debug.Assert(typeParameters.Length == 1);
 
-                    // Create an enumeration to pass as the first parameter to the PageResult<T> constuctor
+                    // ModelFactory an enumeration to pass as the first parameter to the PageResult<T> constuctor
                     Type itemsType = typeof(List<>).MakeGenericType(typeParameters);
                     object items = sampleGenerator.GetSampleObject(itemsType);
 

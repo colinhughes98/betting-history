@@ -229,6 +229,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="DomainLogic\BaseController.cs" />
     <Compile Include="Models\FixtureDetailsModel.cs" />
+    <Compile Include="Models\GetTheBetsModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MarketDetailsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

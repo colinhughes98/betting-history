@@ -43,6 +43,7 @@ namespace BettingAPI.Controllers
             {
                 return _appRoleManager ?? Request.GetOwinContext().GetUserManager<ApplicationRoleManager>();
             }
+            private set { _appRoleManager = value; }
         }
 
         private ApplicationUserManager _userManager;

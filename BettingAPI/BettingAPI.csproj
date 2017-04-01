@@ -15,7 +15,7 @@
     <AssemblyName>BettingAPI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -227,7 +227,7 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="DomainLogic\BaseController.cs" />
+    <Compile Include="DomainLogic\BaseApiController.cs" />
     <Compile Include="Models\FixtureDetailsModel.cs" />
     <Compile Include="Models\GetTheBetsModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -331,7 +331,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1460</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/BettingAPI</IISUrl>
+          <IISUrl>http://localhost:2500/BettingAPI</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

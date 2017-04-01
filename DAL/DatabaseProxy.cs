@@ -15,7 +15,7 @@ namespace DAL
 {
     public class DatabaseProxy : IDataProvider
     {                   
-        public async Task<IDataReader> GetAllBetsHistoryAsync()
+        public IDataReader GetAllBetsHistory()
         {
            var connString =  ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
           
@@ -28,7 +28,7 @@ namespace DAL
                 command.CommandText = "dbo.GetListOfFixtures";
                 command.CommandType = CommandType.StoredProcedure;
 
-                return await command.ExecuteReaderAsync();                          
+                return command.ExecuteReader();                          
             }
         }
     }

@@ -9,22 +9,22 @@ namespace Betting.Common.Models
 {
     public class Repository : IRepository
     {
-        private readonly IDataProvider dataProvider;
+        private readonly IDataProvider _dataProvider;
         public Repository(IDataProvider dataProvider)
         {
-            this.dataProvider = dataProvider;
+            _dataProvider = dataProvider;
         }
 
-        public async Task<BettingDetailsModel> GetTheBetsAsync()
+        public BettingDetailsModel GetTheBets()
         {
-            var hist = await dataProvider.GetAllBetsHistoryAsync();
+            var hist =  _dataProvider.GetAllBetsHistory();
             if (hist == null) throw new Exception();
 
-            while (hist.Read())
-            {
-                //todo: read data
-            }
-            return new BettingDetailsModel();// { FirstName = hist.FirstOrDefault(), Surname = hist.LastOrDefault() };
+            //while (hist.Read())
+            //{
+            //    //todo: read data
+            //}
+            return new BettingDetailsModel() { FirstName = "Col", Surname = "Hughes" };
         }
 
         public BettingDetailsModel GetTheBets(int id)

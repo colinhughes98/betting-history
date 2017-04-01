@@ -9,7 +9,7 @@ namespace Betting.Common.Interfaces
 {
     public interface IRepository
     {
-        Task<BettingDetailsModel> GetTheBetsAsync();
+        BettingDetailsModel GetTheBets();
 
         BettingDetailsModel GetTheBets(int id);
     }

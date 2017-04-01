@@ -10,27 +10,28 @@ using BettingAPI.DomainLogic;
 using BettingAPI.Enums;
 
 namespace BettingAPI.Controllers
-{
-    [Authorize]
+{    
     [RoutePrefix("api/v1/bet")]
-    public class BetController : BaseController
+    public class BetController : BaseApiController
     {
         public BetController(IRepository repo):base(repo)
         {
-        }        
+        }
 
         [HttpGet]
         [Route("", Name = "GetAllBets")]
-        public async Task<IHttpActionResult> GetAllBetsAsync()
+        public IHttpActionResult GetAllBets()
         {
             try
             {
-                return Ok(await CreateGetAllBetsFactoryAsync());
+                var bets = TheRepository.GetTheBets();
+                var getAll = TheModelFactory.Create(bets);
+                return Ok(getAll);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return NotFound();
             }
-        }       
+        }
     }    
 }

@@ -31,5 +31,24 @@ namespace Betting.Common.Models
         {
             return new BettingDetailsModel();
         }
+
+        public IEnumerable<FixtureDetailsModel> GetTheFixtures()
+        {
+            var fixtures = _dataProvider.GetAllFixtures();
+
+            var fixtureList = new List<FixtureDetailsModel>();
+            
+            while (fixtures.Read())
+            {     
+                FixtureDetailsModel fdm = new FixtureDetailsModel()
+                {
+                    Description = Convert.ToString(fixtures["Description"]),
+                    ID = Convert.ToInt32(fixtures["ID"])
+                };
+                fixtureList.Add(fdm);
+            }
+
+            return fixtureList;
+        }
     }
 }

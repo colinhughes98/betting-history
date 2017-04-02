@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Routing;
@@ -40,6 +41,21 @@ namespace BettingAPI.DomainLogic
                 Bets = bets,
                 URL = _url.Link("GetAllBets", null)
             };
+        }
+
+        public IEnumerable<GetTheFixturesModel> Create(IEnumerable<FixtureDetailsModel> fixtures)
+        {
+            IList<GetTheFixturesModel> listOfFixtures = new List<GetTheFixturesModel>();
+
+            foreach (var fixtureDetailsModel in fixtures)
+            {
+                listOfFixtures.Add(new GetTheFixturesModel()
+                {
+                    Fixture = fixtureDetailsModel.Description,
+                    URL = _url.Link("GetAllFixtures", new {id = fixtureDetailsModel.ID})
+                });
+            }
+            return listOfFixtures;
         }
     }
 }

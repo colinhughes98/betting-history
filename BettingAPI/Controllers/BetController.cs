@@ -32,6 +32,6 @@ namespace BettingAPI.Controllers
             {
                 return NotFound();
             }
-        }
+        }       
     }    
 }

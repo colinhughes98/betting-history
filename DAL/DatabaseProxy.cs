@@ -14,22 +14,37 @@ using System.Configuration;
 namespace DAL
 {
     public class DatabaseProxy : IDataProvider
-    {                   
+    {
+        readonly string connString = ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
+
         public IDataReader GetAllBetsHistory()
         {
-           var connString =  ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
-          
+            return DataAccressExecuteReader("dbo.GetListOfFixtures");
+        }
+
+        private IDataReader DataAccressExecuteReader(string procName)
+        {
             Database db = new SqlDatabase(connString);
-           
-            using (var connection = db.CreateConnection())
-            {
+            IDataReader dr;
+
+            var connection = db.CreateConnection();
+
+            //using (var connection = db.CreateConnection())
+            //{
                 connection.Open();
                 var command = connection.CreateCommand();
-                command.CommandText = "dbo.GetListOfFixtures";
+                command.CommandText = procName;
                 command.CommandType = CommandType.StoredProcedure;
 
-                return command.ExecuteReader();                          
-            }
+                dr = command.ExecuteReader();
+            //}
+
+            return dr;
+        }
+
+        public IDataReader GetAllFixtures()
+        {
+            return DataAccressExecuteReader("dbo.GetListOfFixtures");
         }
     }
 }

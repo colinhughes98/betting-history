@@ -7,8 +7,7 @@ namespace Betting.Common.Interfaces
 {
     public interface IDataProvider
     {
-        //Task<bool> UpdateAsync();
-        //Task<DataSet> GeBetsFromDBAsync(int id);
         IDataReader GetAllBetsHistory();
+        IDataReader GetAllFixtures();
     }
 }

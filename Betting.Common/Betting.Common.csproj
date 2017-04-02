@@ -56,6 +56,7 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Models\BettingDetailsModel.cs" />
     <Compile Include="Interfaces\IDataProvider.cs" />
+    <Compile Include="Models\FixtureDetailsModel.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

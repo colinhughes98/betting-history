@@ -9,5 +9,6 @@ namespace BettingAPI.Models
     {
         public string Fixture { get; set; }
         public string URL { get; set; }
+        public string Test { get; set; }
     }
 }

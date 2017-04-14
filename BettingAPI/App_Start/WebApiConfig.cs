@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Microsoft.Owin.Security.OAuth;
 
 namespace BettingAPI
@@ -18,6 +19,10 @@ namespace BettingAPI
             // Web API routes
         
             config.MapHttpAttributeRoutes();       
+            
+            //config.EnableCors(new EnableCorsAttribute("*","*","*"));
         }
     }
+
+
 }

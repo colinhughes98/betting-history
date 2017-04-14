@@ -16,13 +16,18 @@ namespace Betting.Common.Models
         }
 
         public BettingDetailsModel GetTheBets()
-        {
-            var hist =  _dataProvider.GetAllBetsHistory();
-            if (hist == null) throw new Exception();
+        {            
+            //var hist =  _dataProvider.GetAllBetsHistory();
+            //if (hist == null) throw new Exception();
+
+            //var bettingDetailsModel = new List<BettingDetailsModel>();
 
             //while (hist.Read())
             //{
-            //    //todo: read data
+            //   BettingDetailsModel bdm = new BettingDetailsModel
+            //   {
+            //       FirstName = Convert.ToString(hist[""])
+            //   }
             //}
             return new BettingDetailsModel() { FirstName = "Col", Surname = "Hughes" };
         }

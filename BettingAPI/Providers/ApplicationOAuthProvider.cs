@@ -75,7 +75,7 @@ namespace BettingAPI.Providers
         {
             if (context.ClientId == _publicClientId)
             {
-                Uri expectedRootUri = new Uri(context.Request.Uri, "/");
+                Uri expectedRootUri = new Uri(context.Request.Uri, "/BettingAPI/api/v1/bet");
 
                 if (expectedRootUri.AbsoluteUri == context.RedirectUri)
                 {

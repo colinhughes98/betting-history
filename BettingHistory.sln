@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Betting.Common", "Betting.Common\Betting.Common.csproj", "{819BE7B8-A1BB-45F5-A748-EA695B097061}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebApplication2\WebApplication2.csproj", "{62D35952-DFD9-4974-AA0C-7527F9CDF04C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{819BE7B8-A1BB-45F5-A748-EA695B097061}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{819BE7B8-A1BB-45F5-A748-EA695B097061}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{819BE7B8-A1BB-45F5-A748-EA695B097061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62D35952-DFD9-4974-AA0C-7527F9CDF04C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62D35952-DFD9-4974-AA0C-7527F9CDF04C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62D35952-DFD9-4974-AA0C-7527F9CDF04C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62D35952-DFD9-4974-AA0C-7527F9CDF04C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

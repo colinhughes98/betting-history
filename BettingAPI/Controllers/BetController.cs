@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Routing;
 using Betting.Common;
 using Betting.Common.Interfaces;
@@ -11,7 +12,9 @@ using BettingAPI.Enums;
 
 namespace BettingAPI.Controllers
 {    
+    [Authorize]
     [RoutePrefix("api/v1/bet")]
+  
     public class BetController : BaseApiController
     {
         public BetController(IRepository repo):base(repo)
@@ -23,14 +26,14 @@ namespace BettingAPI.Controllers
         public IHttpActionResult GetAllBets()
         {
             try
-            {
+            {            
                 var bets = TheRepository.GetTheBets();
                 var getAll = TheModelFactory.Create(bets);
                 return Ok(getAll);
             }
             catch (Exception ex)
             {
-                return NotFound();
+                return BadRequest(ex.Message);
             }
         }       
     }    

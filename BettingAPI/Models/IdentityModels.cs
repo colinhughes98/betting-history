@@ -21,7 +21,7 @@ namespace BettingAPI.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DB", throwIfV1Schema: false)
         {
         }
         

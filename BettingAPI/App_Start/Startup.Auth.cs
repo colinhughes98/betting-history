@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using BettingAPI.Providers;
 using BettingAPI.Models;
+using Microsoft.Owin.Cors;
 
 namespace BettingAPI
 {
@@ -19,9 +20,12 @@ namespace BettingAPI
 
         public static string PublicClientId { get; private set; }
 
+        public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
+
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+            
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
@@ -29,9 +33,10 @@ namespace BettingAPI
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
-            app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions());
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
-
+            OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
+            
             // Configure the application for OAuth based flow
             PublicClientId = "self";
             OAuthOptions = new OAuthAuthorizationServerOptions
@@ -60,11 +65,14 @@ namespace BettingAPI
             //    appId: "",
             //    appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "228185136373-v1mak8eglrmdki7tgu2k69m1bg4eldil.apps.googleusercontent.com",
+                ClientSecret = "Gwj63vIvb4FGOW0tX17ijhQK",
+                Provider = new GoogleAuthProvider()
+            });
+
+       
         }
     }
 }

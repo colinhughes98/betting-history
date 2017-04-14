@@ -28,5 +28,6 @@ namespace BettingAPI.Results
             response.RequestMessage = Request;
             return Task.FromResult(response);
         }
+
     }
 }

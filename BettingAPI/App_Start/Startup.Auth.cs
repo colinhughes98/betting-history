@@ -65,14 +65,11 @@ namespace BettingAPI
             //    appId: "",
             //    appSecret: "");
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
             {
                 ClientId = "228185136373-v1mak8eglrmdki7tgu2k69m1bg4eldil.apps.googleusercontent.com",
-                ClientSecret = "Gwj63vIvb4FGOW0tX17ijhQK",
-                Provider = new GoogleAuthProvider()
+                ClientSecret = "Gwj63vIvb4FGOW0tX17ijhQK",            
             });
-
-       
         }
     }
 }

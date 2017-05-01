@@ -10,7 +10,8 @@ namespace WebApplication2
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/ColTest.js"));
+                        "~/Scripts/ColTest.js",
+                        "~/Scripts/GoogleAuth.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

@@ -13,6 +13,8 @@ namespace Betting.Common.Interfaces
 
         BettingDetailsModel GetTheBets(int id);
 
-       IEnumerable<FixtureDetailsModel> GetTheFixtures();
+        IEnumerable<FixtureDetailsModel> GetTheFixtures();
+
+        FixtureDetailsModel GetFixture(int id);
     }
 }

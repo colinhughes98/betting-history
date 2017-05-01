@@ -9,5 +9,6 @@ namespace Betting.Common.Interfaces
     {
         IDataReader GetAllBetsHistory();
         IDataReader GetAllFixtures();
+        IDataReader GetFixture(int id);
     }
 }

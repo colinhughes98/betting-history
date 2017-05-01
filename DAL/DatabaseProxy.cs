@@ -10,6 +10,8 @@ using Betting.Common.Interfaces;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Configuration;
+using System.Data.Common;
+using System.Data.SqlClient;
 
 namespace DAL
 {
@@ -22,29 +24,33 @@ namespace DAL
             return DataAccressExecuteReader("dbo.GetListOfFixtures");
         }
 
-        private IDataReader DataAccressExecuteReader(string procName)
+        private IDataReader DataAccressExecuteReader(string procName, IList<DbParameter> parameters = null)
         {
             Database db = new SqlDatabase(connString);
-            IDataReader dr;
 
             var connection = db.CreateConnection();
+            
+            connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = procName;
+            command.CommandType = CommandType.StoredProcedure;
+            if (parameters != null) command.Parameters.AddRange(parameters.ToArray());
 
-            //using (var connection = db.CreateConnection())
-            //{
-                connection.Open();
-                var command = connection.CreateCommand();
-                command.CommandText = procName;
-                command.CommandType = CommandType.StoredProcedure;
-
-                dr = command.ExecuteReader();
-            //}
+            IDataReader dr = command.ExecuteReader();
 
             return dr;
         }
 
         public IDataReader GetAllFixtures()
         {
-            return DataAccressExecuteReader("dbo.GetListOfFixtures");
+            return DataAccressExecuteReader("BettingHistory.dbo.GetListOfFixtures");
+        }
+
+        public IDataReader GetFixture(int id)
+        {
+            IList<DbParameter> parameters = new List<DbParameter>();
+            parameters.Add(new SqlParameter() {ParameterName = "id", DbType = DbType.Int32, Value = id});
+            return DataAccressExecuteReader("BettingHistory.dbo.GetListOfFixtures", parameters);
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
@@ -33,8 +35,9 @@ namespace BettingAPI
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
-            //app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            app.UseCookieAuthentication(new CookieAuthenticationOptions());
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
             OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
             
             // Configure the application for OAuth based flow
@@ -65,10 +68,23 @@ namespace BettingAPI
             //    appId: "",
             //    appSecret: "");
 
+            var googleProvider = new GoogleOAuth2AuthenticationProvider()
+            {
+                OnAuthenticated = (context) =>
+                {
+                    context.Identity.AddClaim(new Claim("Email", context.Email));
+                    context.OwinContext.Authentication.SignIn();
+                    return Task.FromResult(0);
+                }
+            };
+
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
             {
-               
+               ClientId = "228185136373-v1mak8eglrmdki7tgu2k69m1bg4eldil.apps.googleusercontent.com",
+               ClientSecret = "2mb8CDOCy4FecS03JhX-Lev0",
+               Provider = googleProvider
             });
         }
     }
+
 }

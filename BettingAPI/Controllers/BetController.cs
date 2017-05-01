@@ -9,16 +9,18 @@ using Betting.Common.Interfaces;
 using Betting.Common.Models;
 using BettingAPI.DomainLogic;
 using BettingAPI.Enums;
+using BettingAPI.Models;
 
 namespace BettingAPI.Controllers
-{    
-    [Authorize]
+{        
     [RoutePrefix("api/v1/bet")]
-  
     public class BetController : BaseApiController
     {
-        public BetController(IRepository repo):base(repo)
+        private readonly IBetHandler _bet;
+
+        public BetController(IBetHandler bet)
         {
+            _bet = bet;
         }
 
         [HttpGet]
@@ -26,8 +28,8 @@ namespace BettingAPI.Controllers
         public IHttpActionResult GetAllBets()
         {
             try
-            {            
-                var bets = TheRepository.GetTheBets();
+            {
+                var bets =_bet.GetBets();
                 var getAll = TheModelFactory.Create(bets);
                 return Ok(getAll);
             }
@@ -36,5 +38,24 @@ namespace BettingAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }       
-    }    
+    }
+
+    public class BetHandler : IBetHandler
+    {
+        private readonly IRepository _repo;
+
+        public BetHandler(IRepository repo)
+        {
+            _repo = repo;
+        }
+        public BettingDetailsModel GetBets()
+        {
+           return _repo.GetTheBets();
+        }
+    }
+
+    public interface IBetHandler
+    {
+        BettingDetailsModel GetBets();
+    }
 }

@@ -55,5 +55,20 @@ namespace Betting.Common.Models
 
             return fixtureList;
         }
+
+        public FixtureDetailsModel GetFixture(int id)
+        {
+            var fixture = _dataProvider.GetFixture(id);
+
+            FixtureDetailsModel fdm = new FixtureDetailsModel();
+
+            while (fixture.Read())
+            {
+                fdm.Description = Convert.ToString(fixture["Description"]);
+                fdm.ID = Convert.ToInt32(fixture["ID"]);
+            }
+
+            return fdm;
+        }
     }
 }

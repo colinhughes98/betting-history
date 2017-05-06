@@ -16,5 +16,7 @@ namespace Betting.Common.Interfaces
         IEnumerable<FixtureDetailsModel> GetTheFixtures();
 
         FixtureDetailsModel GetFixture(int id);
+
+        bool AddFixture(AddFixtureModel model);
     }
 }

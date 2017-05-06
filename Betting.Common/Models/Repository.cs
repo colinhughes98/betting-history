@@ -70,5 +70,17 @@ namespace Betting.Common.Models
 
             return fdm;
         }
+
+        public bool AddFixture(AddFixtureModel model)
+        {
+            var response = _dataProvider.AddFixture(model);
+            int? id = null;
+            while (response.Read())
+            {
+                id = Convert.ToInt32(response["ID"]);
+            }
+
+            return id != null;
+        }
     }
 }

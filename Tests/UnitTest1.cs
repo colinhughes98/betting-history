@@ -14,44 +14,26 @@ namespace Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestGetAllBets()
         {
-            //Arrange
-            //var results = new[] { "ColinTest", "HughesTest" };
-            //BettingDetailsModel bmodel = new BettingDetailsModel();
-            //bmodel.FirstName = results.FirstOrDefault();
-            //bmodel.Surname = results.LastOrDefault();
-            
-            //var theBets = new Mock<IRepository>();
-            //theBets.Setup(x => x.GetTheBets());
+            var betMock = new Mock<IBetHandler>();
+            var repoMock = new Mock<IRepository>();
 
-            //var dataProvider = new Mock<IDataProvider>();
-            //dataProvider.Setup(x => x.GetAllBetsHistory());
-            
-            //BetController bc = new BetController(theBets.Object);
-            //bc.GetAllBetsAsync();
-            //var history = new Mock<IModelFactory>();
-            //history.Setup(x => x.ModelFactory("CreateGetAllBetsFactoryAsync")).Returns(bmodel);
+            //repoMock.Setup(a=>a.GetTheBets()).Returns(new BettingDetailsModel() {FirstName = })
+            betMock.Setup(a => a.GetBets()).Returns(new BettingDetailsModel() {FirstName = "Col", Surname = "Hughes"});
+            repoMock.Setup(a => a.GetTheBets())
+                .Returns(new BettingDetailsModel() {FirstName = "colin", Surname = "Hughes"});
 
+            BetController bc = new BetController(betMock.Object);
+            bc.GetAllBets();
 
-            //Act
-            //BaseController hist = new BaseController(dataProvider.Object);
-            //hist.ModelFactory("CreateGetAllBetsFactoryAsync");
-            //BetController bc = new BetController(dataProvider.Object);
-            //var result = bc.GetAllBetsAsync();
+            betMock.VerifyAll();
 
-            ////Assert
-            //dataProvider.Verify(a => a.GetAllBetsHistory(), Times.Once());
-            //history.Verify(a => a.CreateGetAllBetsFactoryAsync(), Times.Once);
+            BetHandler bh = new BetHandler(repoMock.Object);
+            var resp = bh.GetBets();
 
-            //Task<bool> response = new Task<bool>( ()=> true);
-            //var dataMoq = new Mock<IDataProvider>();
-            //var bh = new BaseController(dataMoq.Object);
-            //dataMoq.Setup(x => x.UpdateAsync()).Returns(response);
-            ////Act           
-            //var y = bh.AddBetAsync();
-            ////Assert
-            //Assert.AreEqual(response.Result, y.Result);
+            repoMock.VerifyAll();
+
         }
     }
 }

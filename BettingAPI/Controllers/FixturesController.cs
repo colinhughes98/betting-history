@@ -7,6 +7,7 @@ using System.Web.Http;
 using Betting.Common.Interfaces;
 using Betting.Common.Models;
 using BettingAPI.DomainLogic;
+using BettingAPI.Models;
 
 namespace BettingAPI.Controllers
 {
@@ -38,7 +39,7 @@ namespace BettingAPI.Controllers
         }
 
         [HttpGet]
-        [Route("fixture", Name = "GetFixture")]
+        [Route("fixture/{id}", Name = "GetFixture")]
         public IHttpActionResult GetAFixture(int id)
         {
             try
@@ -56,11 +57,13 @@ namespace BettingAPI.Controllers
 
         [HttpPost]
         [Route("", Name = "AddFixture")]
-        public IHttpActionResult AddFixture([FromBody] FixtureDetailsModel fixture)
+        public IHttpActionResult AddFixture([FromBody] AddFixtureModel fixture)
         {
             try
             {
-                return Ok();
+               var response = _fixtures.AddFixture(fixture);
+
+                return response ? (IHttpActionResult) Ok() : BadRequest();
             }
             catch (Exception ex)
             {
@@ -87,11 +90,17 @@ namespace BettingAPI.Controllers
         {
             return id < 1 ? new FixtureDetailsModel() : _repo.GetFixture(id);
         }
+
+        public bool AddFixture(AddFixtureModel model)
+        {
+            return _repo.AddFixture(model);
+        }
     }
 
     public interface IFixturesHandler
     {
         IEnumerable<FixtureDetailsModel> GetTheFixtures();
         FixtureDetailsModel GetTheFixture(int id);
+        bool AddFixture(AddFixtureModel model);
     }
 }

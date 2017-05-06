@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Models\AddFixtureModel.cs" />
     <Compile Include="Models\BettingDetailsModel.cs" />
     <Compile Include="Interfaces\IDataProvider.cs" />
     <Compile Include="Models\FixtureDetailsModel.cs" />

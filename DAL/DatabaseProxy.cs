@@ -12,6 +12,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Configuration;
 using System.Data.Common;
 using System.Data.SqlClient;
+using Betting.Common.Models;
 
 namespace DAL
 {
@@ -51,6 +52,13 @@ namespace DAL
             IList<DbParameter> parameters = new List<DbParameter>();
             parameters.Add(new SqlParameter() {ParameterName = "id", DbType = DbType.Int32, Value = id});
             return DataAccressExecuteReader("BettingHistory.dbo.GetListOfFixtures", parameters);
+        }
+
+        public IDataReader AddFixture(AddFixtureModel model)
+        {
+            IList<DbParameter> parameters = new List<DbParameter>();
+            parameters.Add(new SqlParameter() { ParameterName = "description", DbType = DbType.String, Value = model.Description });
+            return DataAccressExecuteReader("BettingHistory.dbo.AddFixture", parameters);
         }
     }
 }

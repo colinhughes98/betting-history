@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Betting.Common.Handlers;
 using Betting.Common.Interfaces;
 using Betting.Common.Models;
 using BettingAPI.Controllers;
-using BettingAPI.DomainLogic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -16,24 +17,19 @@ namespace Tests
         [TestMethod]
         public void TestGetAllBets()
         {
-            var betMock = new Mock<IBetHandler>();
-            var repoMock = new Mock<IRepository>();
+            var repo = new Mock<IRepository>();
 
-            //repoMock.Setup(a=>a.GetTheBets()).Returns(new BettingDetailsModel() {FirstName = })
-            betMock.Setup(a => a.GetBets()).Returns(new BettingDetailsModel() {FirstName = "Col", Surname = "Hughes"});
-            repoMock.Setup(a => a.GetTheBets())
-                .Returns(new BettingDetailsModel() {FirstName = "colin", Surname = "Hughes"});
+            IEnumerable<FixtureDetailsModel> fdm = new[] {new FixtureDetailsModel {Description = "test", ID = 1}};
 
-            BetController bc = new BetController(betMock.Object);
-            bc.GetAllBets();
+            repo.Setup(a => a.GetTheFixtures())
+                .Returns(() => fdm);
 
-            betMock.VerifyAll();
+            FixturesHandler fh = new FixturesHandler(repo.Object);
+       
+            var resp = fh.GetTheFixtures();
 
-            BetHandler bh = new BetHandler(repoMock.Object);
-            var resp = bh.GetBets();
-
-            repoMock.VerifyAll();
-
+            repo.Verify();
+            Assert.AreEqual(resp, fdm);
         }
     }
 }

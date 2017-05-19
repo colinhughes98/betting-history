@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Betting.Common.Interfaces;
+using Betting.Common.Models;
 
-namespace Betting.Common.Models
+namespace Betting.Common.DatabaseRepo
 {
     public class Repository : IRepository
     {
@@ -39,12 +37,15 @@ namespace Betting.Common.Models
 
         public IEnumerable<FixtureDetailsModel> GetTheFixtures()
         {
-            var fixtures = _dataProvider.GetAllFixtures();
-
+            // var fixtures = _dataProvider.GetAllFixtures();
             var fixtureList = new List<FixtureDetailsModel>();
-            
+
+            var fixtures = _dataProvider.DataAccressExecuteReader("BettingHistory.dbo.GetListOfFixtures");
+
+            if (fixtures == null) return fixtureList;
+
             while (fixtures.Read())
-            {     
+            {
                 FixtureDetailsModel fdm = new FixtureDetailsModel()
                 {
                     Description = Convert.ToString(fixtures["Description"]),
@@ -52,7 +53,6 @@ namespace Betting.Common.Models
                 };
                 fixtureList.Add(fdm);
             }
-
             return fixtureList;
         }
 

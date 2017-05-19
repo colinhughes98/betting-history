@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Routing;
-using Betting.Common.Interfaces;
 using Betting.Common.Models;
 using BettingAPI.Helpers;
 using BettingAPI.Models;
 
-namespace BettingAPI.DomainLogic
+namespace BettingAPI.BaseController
 {
     public abstract class BaseApiController : ApiController
     {

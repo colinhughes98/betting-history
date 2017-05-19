@@ -65,12 +65,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers\FixturesHandler.cs" />
+    <Compile Include="Interfaces\IFixturesHandler.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Models\AddFixtureModel.cs" />
     <Compile Include="Models\BettingDetailsModel.cs" />
     <Compile Include="Interfaces\IDataProvider.cs" />
     <Compile Include="Models\FixtureDetailsModel.cs" />
-    <Compile Include="Models\Repository.cs" />
+    <Compile Include="DatabaseRepo\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

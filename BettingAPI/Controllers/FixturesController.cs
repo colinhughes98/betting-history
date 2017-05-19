@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Betting.Common.Interfaces;
 using Betting.Common.Models;
-using BettingAPI.DomainLogic;
+using BettingAPI.BaseController;
 using BettingAPI.Models;
 
 namespace BettingAPI.Controllers
@@ -31,7 +31,7 @@ namespace BettingAPI.Controllers
                 var getAll = TheModelFactory.Create(fixtures);
                 return Ok(getAll);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return NotFound();
             }
@@ -48,7 +48,7 @@ namespace BettingAPI.Controllers
                 var getAll = TheModelFactory.Create(fixture);
                 return Ok(getAll);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return NotFound();
             }
@@ -65,42 +65,12 @@ namespace BettingAPI.Controllers
 
                 return response ? (IHttpActionResult) Ok() : BadRequest();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return NotFound();
             }
 
         }
     }
-
-    public class FixturesHandler : IFixturesHandler
-    {
-        private readonly IRepository _repo;
-
-        public FixturesHandler(IRepository repo)
-        {
-            _repo = repo;
-        }
-        public IEnumerable<FixtureDetailsModel> GetTheFixtures()
-        {
-            return _repo.GetTheFixtures();
-        }
-
-        public FixtureDetailsModel GetTheFixture(int id)
-        {
-            return id < 1 ? new FixtureDetailsModel() : _repo.GetFixture(id);
-        }
-
-        public bool AddFixture(AddFixtureModel model)
-        {
-            return _repo.AddFixture(model);
-        }
-    }
-
-    public interface IFixturesHandler
-    {
-        IEnumerable<FixtureDetailsModel> GetTheFixtures();
-        FixtureDetailsModel GetTheFixture(int id);
-        bool AddFixture(AddFixtureModel model);
-    }
+  
 }

@@ -18,14 +18,14 @@ namespace DAL
 {
     public class DatabaseProxy : IDataProvider
     {
-        readonly string connString = ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
+        static readonly string connString = ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
 
         public IDataReader GetAllBetsHistory()
         {
             return DataAccressExecuteReader("dbo.GetListOfFixtures");
         }
 
-        private IDataReader DataAccressExecuteReader(string procName, IList<DbParameter> parameters = null)
+        public IDataReader DataAccressExecuteReader(string procName, IList<DbParameter> parameters = null)
         {
             Database db = new SqlDatabase(connString);
 
@@ -60,5 +60,7 @@ namespace DAL
             parameters.Add(new SqlParameter() { ParameterName = "description", DbType = DbType.String, Value = model.Description });
             return DataAccressExecuteReader("BettingHistory.dbo.AddFixture", parameters);
         }
+
+       
     }
 }

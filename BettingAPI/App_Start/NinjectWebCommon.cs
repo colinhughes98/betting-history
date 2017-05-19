@@ -1,9 +1,10 @@
 using System.Web.Http;
 using Betting.Common;
+using Betting.Common.DatabaseRepo;
+using Betting.Common.Handlers;
 using Betting.Common.Interfaces;
 using Betting.Common.Models;
 using BettingAPI.Controllers;
-using BettingAPI.DomainLogic;
 using DAL;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(BettingAPI.App_Start.NinjectWebCommon), "Start")]
@@ -69,7 +70,7 @@ namespace BettingAPI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IRepository>().To<Repository>();
+            kernel.Bind<IRepository>().To<Repository>().InSingletonScope();
             kernel.Bind<IBetHandler>().To<BetHandler>();
             kernel.Bind<IFixturesHandler>().To<FixturesHandler>();
             kernel.Bind<IDataProvider>().To<DatabaseProxy>();

@@ -7,7 +7,7 @@ using System.Web.Routing;
 using Betting.Common;
 using Betting.Common.Interfaces;
 using Betting.Common.Models;
-using BettingAPI.DomainLogic;
+using BettingAPI.BaseController;
 using BettingAPI.Enums;
 using BettingAPI.Models;
 

@@ -3,44 +3,45 @@ using System.Collections.Generic;
 using Betting.Common.Interfaces;
 using Betting.Common.Models;
 
-namespace Betting.Common.DatabaseRepo
+namespace Betting.Common.Service
 {
-    public class Repository : IRepository
+    public class FixturesSerivce : IFixturesSerivce
     {
         private readonly IDataProvider _dataProvider;
-        public Repository(IDataProvider dataProvider)
+        public FixturesSerivce(IDataProvider dataProvider)
         {
             _dataProvider = dataProvider;
         }
 
-        public BettingDetailsModel GetTheBets()
-        {            
-            //var hist =  _dataProvider.GetAllBetsHistory();
-            //if (hist == null) throw new Exception();
+        //public BettingDetailsModel GetTheBets()
+        //{            
+        //    //var hist =  _dataProvider.GetAllBetsHistory();
+        //    //if (hist == null) throw new Exception();
 
-            //var bettingDetailsModel = new List<BettingDetailsModel>();
+        //    //var bettingDetailsModel = new List<BettingDetailsModel>();
 
-            //while (hist.Read())
-            //{
-            //   BettingDetailsModel bdm = new BettingDetailsModel
-            //   {
-            //       FirstName = Convert.ToString(hist[""])
-            //   }
-            //}
-            return new BettingDetailsModel() { FirstName = "Col", Surname = "Hughes" };
-        }
+        //    //while (hist.Read())
+        //    //{
+        //    //   BettingDetailsModel bdm = new BettingDetailsModel
+        //    //   {
+        //    //       FirstName = Convert.ToString(hist[""])
+        //    //   }
+        //    //}
+        //    return new BettingDetailsModel() { FirstName = "Col", Surname = "Hughes" };
+        //}
 
-        public BettingDetailsModel GetTheBets(int id)
-        {
-            return new BettingDetailsModel();
-        }
+        //public BettingDetailsModel GetTheBets(int id)
+        //{
+        //    return new BettingDetailsModel();
+        //}
 
         public IEnumerable<FixtureDetailsModel> GetTheFixtures()
         {
             // var fixtures = _dataProvider.GetAllFixtures();
             var fixtureList = new List<FixtureDetailsModel>();
 
-            var fixtures = _dataProvider.DataAccressExecuteReader("BettingHistory.dbo.GetListOfFixtures");
+            //var fixtures = _dataProvider.DataAccressExecuteReader("BettingHistory.dbo.GetListOfFixtures");
+            var fixtures = _dataProvider.GetAllFixtures();
 
             if (fixtures == null) return fixtureList;
 

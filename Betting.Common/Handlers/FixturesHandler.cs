@@ -10,9 +10,9 @@ namespace Betting.Common.Handlers
 {
     public class FixturesHandler : IFixturesHandler
     {
-        private readonly IRepository _repo;
+        private readonly IFixturesSerivce _repo;
 
-        public FixturesHandler(IRepository repo)
+        public FixturesHandler(IFixturesSerivce repo)
         {
             _repo = repo;
         }

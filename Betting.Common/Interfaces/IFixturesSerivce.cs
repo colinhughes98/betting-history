@@ -7,11 +7,11 @@ using Betting.Common.Models;
 
 namespace Betting.Common.Interfaces
 {
-    public interface IRepository
+    public interface IFixturesSerivce
     {
-        BettingDetailsModel GetTheBets();
+        //BettingDetailsModel GetTheBets();
 
-        BettingDetailsModel GetTheBets(int id);
+        //BettingDetailsModel GetTheBets(int id);
 
         IEnumerable<FixtureDetailsModel> GetTheFixtures();
 

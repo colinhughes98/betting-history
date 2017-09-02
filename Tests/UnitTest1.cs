@@ -17,7 +17,7 @@ namespace Tests
         [TestMethod]
         public void TestGetAllBets()
         {
-            var repo = new Mock<IRepository>();
+            var repo = new Mock<IFixturesSerivce>();
 
             IEnumerable<FixtureDetailsModel> fdm = new[] {new FixtureDetailsModel {Description = "test", ID = 1}};
 

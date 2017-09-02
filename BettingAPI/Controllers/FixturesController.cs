@@ -14,9 +14,15 @@ namespace BettingAPI.Controllers
     [RoutePrefix("api/v1/fixtures")]
     public class FixturesController : BaseApiController
     {
-        private readonly IFixturesHandler _fixtures;
+        private readonly IFixturesSerivce _fixtures;
+        //private readonly IFixturesHandler _fixtures;
 
-        public FixturesController(IFixturesHandler fixtures)
+        //public FixturesController(IFixturesHandler fixtures)
+        //{
+        //    _fixtures = fixtures;
+        //}
+
+        public FixturesController(IFixturesSerivce fixtures)
         {
             _fixtures = fixtures;
         }
@@ -44,7 +50,7 @@ namespace BettingAPI.Controllers
         {
             try
             {
-                var fixture = _fixtures.GetTheFixture(id);
+                var fixture = _fixtures.GetFixture(id);
                 var getAll = TheModelFactory.Create(fixture);
                 return Ok(getAll);
             }

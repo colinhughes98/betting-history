@@ -10,9 +10,8 @@ namespace Betting.Common.Interfaces
     public interface IDataProvider
     {
         IDataReader GetAllBetsHistory();
-        IDataReader GetAllFixtures();
+        IList<FixtureDetailsModel> GetAllFixtures();
         IDataReader GetFixture(int id);
-        IDataReader AddFixture(AddFixtureModel model);
-        IDataReader DataAccressExecuteReader(string procName, IList<DbParameter> parameters = null);
+        IDataReader AddFixture(AddFixtureModel model);        
     }
 }

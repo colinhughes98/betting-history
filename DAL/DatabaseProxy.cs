@@ -25,12 +25,12 @@ namespace DAL
             return DataAccressExecuteReader("dbo.GetListOfFixtures");
         }
 
-        public IDataReader DataAccressExecuteReader(string procName, IList<DbParameter> parameters = null)
+        private IDataReader DataAccressExecuteReader(string procName, IList<DbParameter> parameters = null)
         {
             Database db = new SqlDatabase(connString);
 
             var connection = db.CreateConnection();
-            
+
             connection.Open();
             var command = connection.CreateCommand();
             command.CommandText = procName;
@@ -42,9 +42,33 @@ namespace DAL
             return dr;
         }
 
-        public IDataReader GetAllFixtures()
+        //public IDataReader GetAllFixtures()
+        //{
+        //    return DataAccressExecuteReader("BettingHistory.dbo.GetListOfFixtures");
+        //}
+
+        public IList<FixtureDetailsModel> GetAllFixtures()
         {
-            return DataAccressExecuteReader("BettingHistory.dbo.GetListOfFixtures");
+            IList<FixtureDetailsModel> fixtureList = new List<FixtureDetailsModel>();
+            try
+            {                
+                var fixtures = DataAccressExecuteReader("BettingHistory.dbo.GetListOfFixtures");
+                while (fixtures.Read())
+                {
+                    FixtureDetailsModel fdm = new FixtureDetailsModel()
+                    {
+                        Description = Convert.ToString(fixtures["Description"]),
+                        ID = Convert.ToInt32(fixtures["ID"])
+                    };
+                    fixtureList.Add(fdm);
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unable to get list of fixtures");
+            }
+          
+            return fixtureList;         
         }
 
         public IDataReader GetFixture(int id)

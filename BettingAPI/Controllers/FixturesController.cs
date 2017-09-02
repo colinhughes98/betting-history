@@ -37,7 +37,7 @@ namespace BettingAPI.Controllers
                 var getAll = TheModelFactory.Create(fixtures);
                 return Ok(getAll);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return NotFound();
             }

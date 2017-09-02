@@ -8,6 +8,7 @@ namespace Betting.Common.Service
     public class FixturesSerivce : IFixturesSerivce
     {
         private readonly IDataProvider _dataProvider;
+
         public FixturesSerivce(IDataProvider dataProvider)
         {
             _dataProvider = dataProvider;
@@ -36,24 +37,18 @@ namespace Betting.Common.Service
         //}
 
         public IEnumerable<FixtureDetailsModel> GetTheFixtures()
-        {
-            // var fixtures = _dataProvider.GetAllFixtures();
+        {            
             var fixtureList = new List<FixtureDetailsModel>();
 
-            //var fixtures = _dataProvider.DataAccressExecuteReader("BettingHistory.dbo.GetListOfFixtures");
-            var fixtures = _dataProvider.GetAllFixtures();
-
-            if (fixtures == null) return fixtureList;
-
-            while (fixtures.Read())
+            try
             {
-                FixtureDetailsModel fdm = new FixtureDetailsModel()
-                {
-                    Description = Convert.ToString(fixtures["Description"]),
-                    ID = Convert.ToInt32(fixtures["ID"])
-                };
-                fixtureList.Add(fdm);
+                fixtureList = (List<FixtureDetailsModel>) _dataProvider.GetAllFixtures();                
             }
+            catch (Exception)
+            {
+                throw;
+            }
+            
             return fixtureList;
         }
 
